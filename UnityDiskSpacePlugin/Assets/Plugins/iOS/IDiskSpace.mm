@@ -9,10 +9,10 @@
 
 
 extern "C" {
-	long _iDiskSpace_FreeSpece(const char *path) {
+	uint64_t _iDiskSpace_FreeSpece(const char *path) {
 		NSDictionary *dict = [[NSFileManager defaultManager] fileSystemAttributesAtPath:[NSString stringWithUTF8String:path]];
 		NSNumber *free = [dict valueForKey:@"NSFileSystemFreeSize"];
-		return [free longValue];
+		return [free unsignedLongLongValue];
 	}
 	
 }
